@@ -19,11 +19,16 @@ package com.example.android.hilt.util
 import android.annotation.SuppressLint
 import java.text.SimpleDateFormat
 import java.util.Date
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * String formatter for the log dates.
  */
-class DateFormatter {
+//Binding
+//this binding is not scoped cuz everytime we want a new instance to be created
+@Singleton
+class DateFormatter @Inject constructor(){
 
     @SuppressLint("SimpleDateFormat")
     private val formatter = SimpleDateFormat("d MMM yyyy HH:mm:ss")
