@@ -28,9 +28,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android.hilt.LogApplication
 import com.example.android.hilt.R
 import com.example.android.hilt.data.Log
+import com.example.android.hilt.data.LoggerDataSource
 import com.example.android.hilt.data.LoggerLocalDataSource
+import com.example.android.hilt.di.DatabaseLogger
+import com.example.android.hilt.di.InMemoryLogger
 import com.example.android.hilt.util.DateFormatter
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.logging.Logger
 import javax.inject.Inject
 
 /**
@@ -42,7 +46,8 @@ import javax.inject.Inject
 class LogsFragment : Fragment() {
 
     //Field Injection
-    @Inject lateinit var logger: LoggerLocalDataSource
+    @DatabaseLogger
+    @Inject lateinit var logger: LoggerDataSource
     @Inject lateinit var dateFormatter: DateFormatter
 
     private lateinit var recyclerView: RecyclerView
